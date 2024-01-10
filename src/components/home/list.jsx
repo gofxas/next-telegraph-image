@@ -23,11 +23,20 @@ export function List() {
     window.open(location.origin + i.src);
   };
 
+  const output = () => {
+    const file = new File([JSON.stringify(list)], "filelist.json");
+    const url  = URL.createObjectURL(file);
+    const a = document.createElement("a");
+    a.download = "filelist.json";
+    a.href = url;
+    a.click();
+  }
+
   return (
     <>
       <div className="flex justify-between items-center p-2 border border-slate-300 rounded my-3">
         <p>文件总数：{friendCount}</p>
-        <Button>导出列表</Button>
+        <Button onClick={output}>导出列表</Button>
       </div>
       <ScrollArea className={cn("p-2 flex-1 h-[400px]")}>
         <table className="max-w-full w-full border-collapse border border-slate-400">

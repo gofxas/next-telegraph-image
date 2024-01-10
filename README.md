@@ -1,17 +1,17 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 启动本地服务  
 
-## Getting Started
-
-First, run the development server:
+启动本地服务  
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+npm install
 
-git@github.com:gofxas/next-telegraph-image.git
+npm run dev
+```
+# 部署  
+
+`
+非常建议创建个vercel账号部署到vercel，个人使用额度几乎是用不完的。点一下下面按钮就开始部署了
+`
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgofxas%2Fnext-telegraph-image&amp;project-name=next-telegraph-image&amp;repository-name=next-telegraph-image)
+

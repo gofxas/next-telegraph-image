@@ -2,6 +2,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -47,13 +48,21 @@ export default async function Home() {
           <CardDescription
             style={{ textShadow: "1px 1px 1px #fff", color: "#999" }}
           >
-            使用Nextjs搭建的图床工具，可以直接部署到Vercel使用。项目地址：
+            使用Nextjs搭建的图床工具，可以直接部署到Vercel使用。项目地址：<a href="https://github.com/gofxas/next-telegraph-image" target={"_blank"}>https://github.com/gofxas/next-telegraph-image</a>
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Uploader />
           <List />
         </CardContent>
+        <CardFooter>
+        <a 
+          target={"_blank"}
+          className="font-bold text-red-400 hover:text-red-600"
+          href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgofxas%2Fnext-telegraph-image&amp;project-name=next-telegraph-image&amp;repository-name=next-telegraph-image" rel="nofollow">
+            一键部署到Vercel
+          </a>
+        </CardFooter>
       </Card>
     </div>
   );
