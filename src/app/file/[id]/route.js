@@ -2,14 +2,18 @@ import { NextResponse } from "next/server";
 
 async function handle(req) {
   try {
+    const newFetchHeaders = new Headers(req.headers);
+    newFetchHeaders.delete("host");
+    newFetchHeaders.delete("referer");
     const fetchOption = {
       method: req.method,
-      headers: req.headers,
+      headers: newFetchHeaders,
       body: req.body,
+      mode:"cors"
     };
     const uri = new URL(req.url);
     const url = "https://telegra.ph" + uri.pathname + uri.search;
-    console.log(url)
+    
     const response = await fetch(url, fetchOption);
     const newHeaders = new Headers(response.headers);
     newHeaders.delete("content-encoding");
