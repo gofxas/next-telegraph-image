@@ -8,8 +8,7 @@ async function handle(req) {
     const fetchOption = {
       method: req.method,
       headers: newFetchHeaders,
-      body: req.body,
-      mode:"cors"
+      body: req.body
     };
     const uri = new URL(req.url);
     const url = "https://telegra.ph" + uri.pathname + uri.search;
@@ -17,6 +16,7 @@ async function handle(req) {
     const response = await fetch(url, fetchOption);
     const newHeaders = new Headers(response.headers);
     newHeaders.delete("content-encoding");
+    newHeaders.set("connection","unset")
     return new NextResponse(response.body, {
         status: response.status,
         statusText: response.statusText,
