@@ -6,7 +6,7 @@ export async function middleware(request) {
   if (process.env.IMGKEY) {
     const r = await ImageReview(url);
     if (r) {
-      return NextResponse.redirect(url.origin+'/R.jpg');
+      return NextResponse.redirect(url.origin+'/r.jpeg');
     }
   }
   const response = NextResponse.next();
