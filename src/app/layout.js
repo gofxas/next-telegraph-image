@@ -8,8 +8,9 @@ export const fontSans = FontSans({
 });
 
 export const metadata = {
-  title: "Use Telegraph Image",
-  description: "Use Telegraph Image, Max Size 5mb",
+  title: "Telegraph 图床",
+  description: "图床,免费图床,在线图床,图片上传,图片托管,图片分享,图片外链,开发者图床,博客图床,网站图床,社交媒体图床,图片压缩,国内图床",
+  keywords:"图床,免费图床,在线图床,图片上传,图片托管,图片分享,图片外链,开发者图床,博客图床,网站图床,社交媒体图床,图片压缩,国内图床"
 };
 export const viewport = {
   width: 'device-width',
