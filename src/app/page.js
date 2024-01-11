@@ -16,6 +16,7 @@ const fetchData = async () => {
   const bing_data = await res.json();
   return bing_data.images;
 };
+
 export default async function Home() {
   const bgs = await fetchData();
   // const bgs = []
@@ -33,7 +34,6 @@ export default async function Home() {
             />
           );
         })}
-        <figure></figure>
       </div>
       <Card className="base-card w-full flex flex-col md:w-[750px] lg:w-[950px] xl:w-[1200px] 2xl:w-[1450px]">
         <CardHeader>
@@ -48,7 +48,16 @@ export default async function Home() {
           <CardDescription
             style={{ textShadow: "1px 1px 1px #fff", color: "#999" }}
           >
-            使用Nextjs搭建的图床工具，可以直接部署到Vercel使用。项目地址：<a href="https://github.com/gofxas/next-telegraph-image" target={"_blank"}>https://github.com/gofxas/next-telegraph-image</a>
+            使用Nextjs搭建的图床工具，可以直接部署到Vercel使用。
+          </CardDescription>
+          <CardDescription>
+            项目地址：
+            <a
+              href="https://github.com/gofxas/next-telegraph-image"
+              target={"_blank"}
+            >
+              https://github.com/gofxas/next-telegraph-image
+            </a>
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -56,10 +65,12 @@ export default async function Home() {
           <List />
         </CardContent>
         <CardFooter>
-        <a 
-          target={"_blank"}
-          className="font-bold text-red-400 hover:text-red-600"
-          href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgofxas%2Fnext-telegraph-image&amp;project-name=next-telegraph-image&amp;repository-name=next-telegraph-image" rel="nofollow">
+          <a
+            target={"_blank"}
+            className="font-bold text-red-400 hover:text-red-600"
+            href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgofxas%2Fnext-telegraph-image&amp;project-name=next-telegraph-image&amp;repository-name=next-telegraph-image"
+            rel="nofollow"
+          >
             一键部署到Vercel
           </a>
         </CardFooter>

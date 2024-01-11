@@ -7,20 +7,27 @@ async function handle(req) {
     newHeaders.delete("host");
     newHeaders.delete("referer");
     const fetchOption = {
-        method: req.method,
-        headers: newHeaders,
-        body: req.body,
-        "duplex": "half",
-    }
-    
+      method: req.method,
+      headers: newHeaders,
+      body: req.body,
+      duplex: "half",
+    };
+
     const uri = new URL(req.url);
-    const url = 'https://telegra.ph/upload'+ uri.search;
+    const url = "https://telegra.ph/upload" + uri.search;
     const response = await fetch(url, fetchOption);
-    const result = await response.json();
-    console.log(result)
-    return NextResponse.json(result);
+    const newResHeaders = new Headers();
+    newResHeaders.set("Access-Control-Allow-Credentials",false)
+    newResHeaders.set("Access-Control-Allow-Origin","*")
+    newResHeaders.set("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS,HEADER")
+    
+    return new NextResponse(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers:newResHeaders
+    });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return NextResponse.json({ error });
   }
 }

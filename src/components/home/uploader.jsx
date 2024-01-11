@@ -6,7 +6,10 @@ import { cn } from "@/lib/utils";
 import { db } from "@/lib/db";
 import copy from "copy-to-clipboard";
 import { toast } from "sonner";
+import LoadingSvg from "../../assets/loading2.svg";
 export function Uploader() {
+  console.log(LoadingSvg);
+
   const [loading, setLoading] = useState(false);
 
   const uploadHandler = (form) => {
@@ -18,7 +21,7 @@ export function Uploader() {
       .then((res) => res.json())
       .then((res) => {
         insertDatas(res);
-        copyLink(res[0])
+        copyLink(res[0]);
       })
       .finally(() => {
         setLoading(() => false);
@@ -28,14 +31,16 @@ export function Uploader() {
     const link = location.origin + i.src;
     copy(link);
     toast.success("复制成功！");
-};
+  };
   const insertDatas = (res) => {
-    db.image.bulkPut(res.map(t => ({
-      src:t.src,
-      size:0, 
-      createAt: new Date()
-    })));
-  }
+    db.image.bulkPut(
+      res.map((t) => ({
+        src: t.src,
+        size: 0,
+        createAt: new Date(),
+      }))
+    );
+  };
 
   const selectFile = () => {
     if (loading) {
@@ -47,7 +52,7 @@ export function Uploader() {
     fileEle.onchange = () => {
       const form = new FormData();
       form.append("file", fileEle.files[0]);
-      uploadHandler(form)
+      uploadHandler(form);
     };
     fileEle.click();
   };
@@ -55,7 +60,7 @@ export function Uploader() {
   const dropFile = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log(e)
+    console.log(e);
     const ext = "/(.jpeg|.jpg|.png|.gif|.mp4)$/i";
     const form = new FormData();
     if (e.dataTransfer.items) {
@@ -71,24 +76,22 @@ export function Uploader() {
         }
       }
       if (formOK) {
-        uploadHandler(form)
+        uploadHandler(form);
       }
     }
   };
-
-
-
 
   return (
     <>
       <div
         onClick={selectFile}
         className={cn(
-          "p-2 text-center cursor-pointer border border-slate-400 rounded bg-sky-100/[0.3] hover:bg-sky-200/[0.5] duration-300",
+          "flex items-center justify-center p-2 text-center cursor-pointer border border-slate-400 rounded bg-sky-100/[0.3] hover:bg-sky-200/[0.5] duration-300",
           loading && "cursor-not-allowed"
         )}
       >
-        选择一个 jpeg/png/gif/mp4 文件
+        {loading ? <img width={24} src={LoadingSvg.src} alt="loading" /> : ""}
+        <span>选择一个 jpeg/png/gif/mp4 文件</span>
       </div>
     </>
   );

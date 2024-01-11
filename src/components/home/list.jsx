@@ -25,13 +25,12 @@ export function List() {
 
   const output = () => {
     const file = new File([JSON.stringify(list)], "filelist.json");
-    const url  = URL.createObjectURL(file);
+    const url = URL.createObjectURL(file);
     const a = document.createElement("a");
     a.download = "filelist.json";
     a.href = url;
     a.click();
-  }
-
+  };
   return (
     <>
       <div className="flex justify-between items-center p-2 border border-slate-300 rounded my-3">
@@ -52,9 +51,12 @@ export function List() {
           <tbody>
             {list.map((item) => (
               <tr key={item.id}>
-                <td className="border p-2 border-slate-300">{item.src}</td>
+                <td className="border p-2 max-w-[220px] border-slate-300">
+                  <p className="break-all">{item.src}</p>
+                </td>
                 <td className="border p-2 hidden md:table-cell border-slate-300">
                   {item.createAt.toLocaleDateString() +
+                    "  " +
                     item.createAt.toLocaleTimeString()}
                 </td>
                 <td className="border p-2 text-center border-slate-300">
