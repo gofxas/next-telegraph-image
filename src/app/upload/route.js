@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-
 async function handle(req) {
   try {
     // await connectMongo();

@@ -40,4 +40,11 @@ function testCors() {
 
 ```  
 ## 图片预览问题  
-直接使用的nextjs rewrites 配置代理到源图地址。 因为走[nousedfile]这个路由的时候 会遇到GZIP压缩图片问题。导致图片显示不完整。
+直接使用的nextjs rewrites 配置代理到源图地址。 因为走[nousedfile]这个路由的时候 会遇到GZIP压缩图片问题。导致图片显示不完整。  
+
+# 开启资源审查 
+
+在 `https://moderatecontent.com/`申请了key以后填写到`.env.production` 开启审查  
+本地环境是 `.env.local` 文件  
+
+[立即申请资源审查KEY](https://moderatecontent.com/signup)

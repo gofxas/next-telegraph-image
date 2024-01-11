@@ -16,7 +16,7 @@ async function handle(req) {
     const response = await fetch(url, fetchOption);
     const newHeaders = new Headers(response.headers);
     newHeaders.delete("content-encoding");
-    newHeaders.set("connection","unset")
+    newHeaders.set("connection","unset");
     return new NextResponse(response.body, {
         status: response.status,
         statusText: response.statusText,
