@@ -85,7 +85,7 @@
 }
 .base-card {
   z-index: 1;
-  backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(10px);
   background:rgba(251,251,253,0.8);
   transition: background 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
   transition-property: background, backdrop-filter, -webkit-backdrop-filter;

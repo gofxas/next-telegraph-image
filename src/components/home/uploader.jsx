@@ -8,9 +8,10 @@ import copy from "copy-to-clipboard";
 import { toast } from "sonner";
 import LoadingSvg from "../../assets/loading2.svg";
 export function Uploader() {
-  console.log(LoadingSvg);
+  // console.log(LoadingSvg);
 
   const [loading, setLoading] = useState(false);
+  const [over, setOver] = useState(false);
 
   const uploadHandler = (form) => {
     setLoading(() => true);
@@ -56,22 +57,39 @@ export function Uploader() {
     };
     fileEle.click();
   };
-
+  const dragover = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // console.log(e)
+  };
+  const dragenter = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setOver(() => true);
+    // console.log(e)
+  };
+  const dragleave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setOver(() => false);
+    // console.log(e)
+  };
   const dropFile = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log(e);
-    const ext = "/(.jpeg|.jpg|.png|.gif|.mp4)$/i";
+    setOver(() => false);
+    // console.log(e, "dropFile EvENT");
+    const ext = /(.jpeg|.jpg|.png|.gif|.mp4)$/i;
     const form = new FormData();
+    let formOK = false;
     if (e.dataTransfer.items) {
       const list = [...e.dataTransfer.items];
-      let formOK = false;
       for (let i = 0; i < list.length; i++) {
         const item = list[i];
         const file = item.getAsFile();
         if (ext.test(file.name)) {
           form.append("file", file);
-          formOk = true;
+          formOK = true;
           break;
         }
       }
@@ -85,13 +103,19 @@ export function Uploader() {
     <>
       <div
         onClick={selectFile}
+        onDrop={dropFile}
+        onDragOver={dragover}
+        onDragEnter={dragenter}
+        onDragLeave={dragleave}
         className={cn(
-          "flex items-center justify-center p-2 text-center cursor-pointer border border-slate-400 rounded bg-sky-100/[0.3] hover:bg-sky-200/[0.5] duration-300",
-          loading && "cursor-not-allowed"
+          "flex flex-col items-center max-w-96 m-auto justify-center p-10 text-center cursor-pointer border border-slate-400 rounded bg-sky-100/[0.3] hover:bg-sky-200/[0.5] duration-300",
+          loading && "cursor-not-allowed",
+          over && "bg-teal-500/[0.3]"
         )}
       >
         {loading ? <img width={24} src={LoadingSvg.src} alt="loading" /> : ""}
         <span>选择一个 jpeg/png/gif/mp4 文件</span>
+        <span>将 拖动文件到这里</span>
       </div>
     </>
   );
