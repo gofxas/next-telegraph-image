@@ -85,8 +85,10 @@
 }
 .base-card {
   z-index: 1;
-  backdrop-filter: blur(4px);
-  background-color: #ffffffb5;
+  backdrop-filter: saturate(180%) blur(20px);
+  background:rgba(251,251,253,0.8);
+  transition: background 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+  transition-property: background, backdrop-filter, -webkit-backdrop-filter;
 }
 .background {
   width: 100%;
@@ -108,7 +110,7 @@
     color:transparent;
     opacity: 0;
     backface-visibility:hidden;
-    animation: bganimation 30s linear -.5s infinite
+    animation: bganimation 18s linear -.5s infinite
 }
 
 @keyframes bganimation {
@@ -124,11 +126,11 @@
       animation-timing-function: ease-out
   }
 
-  20% {
+  33% {
       opacity: 1
   }
 
-  28% {
+  45% {
       opacity: 0
   }
 
