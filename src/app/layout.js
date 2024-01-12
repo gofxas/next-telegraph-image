@@ -2,7 +2,6 @@ import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
-import Script from "next/script";
 export const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -33,19 +32,20 @@ export default function RootLayout({ children }) {
         {children}
         <Toaster richColors />
       </body>
-      <Script
+      <script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-8KHW9QWHF2"
-        onReady={() => {
-          window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            dataLayer.push(arguments);
-          }
-          gtag("js", new Date());
+      ></script>
+      <script
+        dangerouslySetInnerHTML={`
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
 
-          gtag("config", "G-8KHW9QWHF2");
-        }}
-      ></Script>
+        gtag("config", "G-8KHW9QWHF2");`}
+      ></script>
     </html>
   );
 }
