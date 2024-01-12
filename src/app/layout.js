@@ -1,23 +1,26 @@
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
+import Script from "next/script";
 export const fontSans = FontSans({
   subsets: ["latin"],
-  variable: "--font-sans"
+  variable: "--font-sans",
 });
 
 export const metadata = {
   title: "Telegraph 图床",
-  description: "图床,免费图床,在线图床,图片上传,图片托管,图片分享,图片外链,开发者图床,博客图床,网站图床,社交媒体图床,图片压缩,国内图床",
-  keywords:"图床,免费图床,在线图床,图片上传,图片托管,图片分享,图片外链,开发者图床,博客图床,网站图床,社交媒体图床,图片压缩,国内图床"
+  description:
+    "图床,免费图床,在线图床,图片上传,图片托管,图片分享,图片外链,开发者图床,博客图床,网站图床,社交媒体图床,图片压缩,国内图床",
+  keywords:
+    "图床,免费图床,在线图床,图片上传,图片托管,图片分享,图片外链,开发者图床,博客图床,网站图床,社交媒体图床,图片压缩,国内图床",
 };
 export const viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
   maximumScale: 1,
   userScalable: 1,
-}
+};
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -28,8 +31,21 @@ export default function RootLayout({ children }) {
         )}
       >
         {children}
-        <Toaster richColors/>
+        <Toaster richColors />
       </body>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-8KHW9QWHF2"
+        onReady={() => {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-8KHW9QWHF2");
+        }}
+      ></Script>
     </html>
   );
 }
