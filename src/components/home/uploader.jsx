@@ -114,8 +114,17 @@ export function Uploader() {
         )}
       >
         {loading ? <img width={24} src={LoadingSvg.src} alt="loading" /> : ""}
-        <span>选择一个 jpeg/png/gif/mp4 文件</span>
-        <span>将 拖动文件到这里</span>
+        {over ? (
+          <>
+          <span className="text-sm">已选中文件</span>
+            <span className="text-sm">松开上传！</span>
+          </>
+        ) : (
+          <>
+            <span className="text-sm">选择一个 jpeg/png/gif/mp4 文件</span>
+            <span className="text-sm">将 拖动文件到这里</span>
+          </>
+        )}
       </div>
     </>
   );
