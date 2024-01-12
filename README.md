@@ -47,4 +47,8 @@ function testCors() {
 在 `https://moderatecontent.com/`申请了key以后填写到`.env.production` 开启审查  
 本地环境是 `.env.local` 文件  
 
-[立即申请资源审查KEY](https://moderatecontent.com/signup)
+[立即申请资源审查KEY](https://moderatecontent.com/signup) 
+
+
+## 资源审查不可以原因！！！  
+在vercel环境下。middleware使用了 edge runtime，无法读取 node环境变量。所以还是建议fork过去之后 在代码里面修改。
