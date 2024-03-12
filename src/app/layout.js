@@ -1,6 +1,5 @@
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
-import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -8,11 +7,7 @@ export const fontSans = FontSans({
 });
 
 export const metadata = {
-  title: "Telegraph 图床",
-  description:
-    "图床,免费图床,在线图床,图片上传,图片托管,图片分享,图片外链,开发者图床,博客图床,网站图床,社交媒体图床,图片压缩,国内图床",
-  keywords:
-    "图床,免费图床,在线图床,图片上传,图片托管,图片分享,图片外链,开发者图床,博客图床,网站图床,社交媒体图床,图片压缩,国内图床",
+  title: "//",
 };
 export const viewport = {
   width: "device-width",
@@ -30,24 +25,7 @@ export default function RootLayout({ children }) {
         )}
       >
         {children}
-        <Toaster richColors />
       </body>
-      <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-8KHW9QWHF2"
-      ></script>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-              dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
-
-            gtag("config", "G-8KHW9QWHF2");`,
-        }}
-      ></script>
     </html>
   );
 }
